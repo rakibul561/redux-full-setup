@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form";
 
@@ -41,6 +42,18 @@ export function AddTaskModel() {
                   <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input {...field} value={field.value || "" } />
+                  </FormControl>
+                </FormItem>
+              )}
+            /> 
+            <FormField
+              control={form.control}
+              name="Description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea {...field} value={field.value || "" } />
                   </FormControl>
                 </FormItem>
               )}
