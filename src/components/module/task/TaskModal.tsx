@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -17,10 +17,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { addTask } from "@/redux/features/counter/task/TaskSlice";
 import { useAppDispatch } from "@/redux/middleware/hook";
+import type { ITask } from "@/types";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 
 export function AddTaskModel() { 
@@ -30,9 +31,8 @@ export function AddTaskModel() {
   const disPatch = useAppDispatch();
 
 
-  const onSubmit = (data) => {
-    console.log(data);
-    disPatch(addTask(data))
+  const onSubmit:SubmitHandler<FieldValues> = (data) => {
+    disPatch(addTask(data as ITask))
   };
 
   return (
@@ -62,7 +62,7 @@ export function AddTaskModel() {
             /> 
             <FormField
               control={form.control}
-              name="Description"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Description</FormLabel>
@@ -99,7 +99,7 @@ export function AddTaskModel() {
         />
          <FormField
           control={form.control}
-          name="dob"
+          name="dueDate"
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Due Date</FormLabel>
