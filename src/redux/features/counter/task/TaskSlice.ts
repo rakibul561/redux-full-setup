@@ -1,6 +1,6 @@
 import { createSlice, nanoid, type PayloadAction } from "@reduxjs/toolkit";
 import type { ITask } from "@/types";
-
+import type { RootState } from "@/redux/store";
  
   
   
@@ -17,7 +17,7 @@ import type { ITask } from "@/types";
         title: "hello",
         description: "hello bangladesh",
         priority:"medium",
-        dueDate: "Wed Jun 18 2025 00:00:00 GMT-0700"
+        dueDate: "18 2025 00:00:00"
     }],
     filter: "all",
    
@@ -48,17 +48,39 @@ import type { ITask } from "@/types";
         
      } ,
      deleteTask: (state, action:PayloadAction<string>) =>{
-        state.tasks =    state.tasks.filter((task) => task.id !== action.payload);
+        state.tasks = state.tasks.filter((task) => task.id !== action.payload);
      },
      updatedFilter : (state, action:PayloadAction<"all" | "low" | "medium" | "high">) =>{
         state.filter= action.payload
      }
 
     }
-   })  
+   })   
 
 
-   export const {addTask, toggleComplateState, deleteTask} = taskSlice.actions;
+   export const selectTask = (state: RootState) =>{
+
+       const filter = state.todo.filter ;
+
+       if(filter === "low"){
+         return state.todo.tasks.filter((task) => task.priority === "low")
+       } else if (filter === "medium") {
+         return state.todo.tasks.filter((task) => task.priority === "medium")
+       } else if (filter === "high") {
+         return state.todo.tasks.filter((task) => task.priority === "high")
+       } else{
+      return state.todo.tasks ;
+          
+       }
+
+      
+   } 
+   export const selectFilter = (state:RootState) =>{
+      return  state.todo.filter ;
+   }
+
+
+   export const {addTask, toggleComplateState, deleteTask, updatedFilter} = taskSlice.actions;
 
    export default taskSlice.reducer;
 

@@ -3,7 +3,8 @@
 import TaskCard from "@/components/module/task/TaskCard";
 import { AddTaskModel } from "@/components/module/task/TaskModal";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAppSelector } from "@/redux/middleware/hook"; // ✅ বড় S
+import { updatedFilter } from "@/redux/features/counter/task/TaskSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/middleware/hook"; // ✅ বড় S
 import type { RootState } from "@/redux/store";
 
 
@@ -11,14 +12,19 @@ export default function Taks() {
   const tasks = useAppSelector(selectTasks);
   console.log(tasks);
 
+   const disPatch = useAppDispatch();
+
   return (
   <div className="max-w-7xl px-5 mt-20 mx-auto">
      <div className="flex justify-end items-center gap-5">
       <h1 className="mr-auto"> Tasks</h1>
-       <Tabs>
+       <Tabs defaultValue="all">
          <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger onClick={() => disPatch(updatedFilter("all"))} value="all">All</TabsTrigger>
+          <TabsTrigger onClick={() => disPatch(updatedFilter("low"))} value="low">Low</TabsTrigger>
+          <TabsTrigger onClick={() => disPatch(updatedFilter("medium"))} value="medium">Medium</TabsTrigger>
+          <TabsTrigger onClick={() => disPatch(updatedFilter("high"))} value="high">High</TabsTrigger>
+         
         </TabsList>
        </Tabs>
 
