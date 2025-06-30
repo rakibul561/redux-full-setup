@@ -4,11 +4,11 @@ A complete Redux Toolkit setup example using React, TypeScript, and modern best 
 
 ## 🚀 Features
 
-- 🔧 Redux Toolkit setup with `createSlice` and `configureStore`
-- ✅ Type-safe Redux using TypeScript
-- 📂 Organized folder structure
-- 📝 Task Management Example (Add, Delete, Toggle Complete, Filter)
-- 📊 Priority-based filtering (low, medium, high)
+- Redux Toolkit setup with `createSlice` and `configureStore`
+- Type-safe Redux using TypeScript
+- Organized folder structure
+- Task management example (Add, Delete, Toggle Complete, Filter)
+- Filter tasks by priority (low, medium, high)
 
 ## 🧱 Tech Stack
 
@@ -16,27 +16,27 @@ A complete Redux Toolkit setup example using React, TypeScript, and modern best 
 - TypeScript
 - Redux Toolkit
 - Vite
-- Tailwind CSS (optional if you added it)
-
----
+- Tailwind CSS (if included)
 
 ## 📁 Project Structure
 
 redux-full-setup/
 ├── src/
-│ ├── components/ # Reusable components
+│ ├── components/ # Reusable UI components
 │ ├── redux/ # Redux logic (store, slices)
 │ │ ├── store.ts # Redux store configuration
 │ │ └── features/
 │ │ └── task/ # Task slice and related logic
 │ ├── types/ # TypeScript type definitions
-│ └── App.tsx # Main app component 
+│ └── App.tsx # Main app component
 
-📦 Redux Setup Overview
-Store
-ts
+bash
 Copy
 Edit
+
+## ⚙️ Redux Store Setup
+
+```ts
 // src/redux/store.ts
 import { configureStore } from '@reduxjs/toolkit'
 import taskReducer from './features/task/taskSlice'
@@ -49,9 +49,6 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
-
-
-
 📌 Usage Example
 Add new task
 
@@ -61,3 +58,11 @@ Delete task
 
 Filter tasks by priority
 
+📥 Installation & Running
+bash
+Copy
+Edit
+git clone https://github.com/rakibul561/redux-full-setup.git
+cd redux-full-setup
+npm install
+npm run dev
