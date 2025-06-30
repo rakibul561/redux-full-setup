@@ -15,16 +15,24 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { addTask } from "@/redux/features/counter/task/TaskSlice";
+import { useAppDispatch } from "@/redux/middleware/hook";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 
+
 export function AddTaskModel() { 
   const form = useForm(); 
 
-  const onSubmit = (data: string) => {
+   
+  const disPatch = useAppDispatch();
+
+
+  const onSubmit = (data) => {
     console.log(data);
+    disPatch(addTask(data))
   };
 
   return (
