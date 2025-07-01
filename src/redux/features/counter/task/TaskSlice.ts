@@ -60,7 +60,10 @@ import type { RootState } from "@/redux/store";
 
    export const selectTask = (state: RootState) =>{
 
-       const filter = state.todo.filter ;
+       const filter = state.todo.filter ; 
+
+
+      //  data filter 
 
        if(filter === "low"){
          return state.todo.tasks.filter((task) => task.priority === "low")
@@ -70,7 +73,7 @@ import type { RootState } from "@/redux/store";
          return state.todo.tasks.filter((task) => task.priority === "high")
        } else{
       return state.todo.tasks ;
-          
+
        }
 
       
