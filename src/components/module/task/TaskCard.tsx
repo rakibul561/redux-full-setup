@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import { useAppDispatch } from "@/redux/middleware/hook";
 import { deleteTask, toggleComplateState } from "@/redux/features/counter/task/TaskSlice";
 
+
+// props diclartion
 interface IProps {
   task: ITask;
 }
