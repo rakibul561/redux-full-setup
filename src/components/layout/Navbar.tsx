@@ -15,10 +15,10 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          <Link to='/' className="text-gray-600 hover:text-blue-500">Home</Link>
-          <Link to='/taks' className="text-gray-600 hover:text-blue-500">Taks</Link>
-          <Link to='/users' className="text-gray-600 hover:text-blue-500">User</Link>
-          <Link to='/' className="text-gray-600 hover:text-blue-500">Home</Link>
+          <Link to='/' className="text-gray-600 font-bold hover:text-blue-500">Home</Link>
+          <Link to='/taks' className="text-gray-600 font-bold hover:text-blue-500">Taks</Link>
+          <Link to='/users' className="text-gray-600 font-bold hover:text-blue-500">User</Link>
+          <Link to='/' className="text-gray-600 font-bold hover:text-blue-500">Home</Link>
     
         </div>
         <div>
